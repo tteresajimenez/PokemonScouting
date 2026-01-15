@@ -1,0 +1,148 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pokemon Scouting API",
+    "description": "API for retrieving, processing, and storing Pokémon scouting data using PokeAPI.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/pokemon": {
+      "get": {
+        "summary": "List all stored Pokémon",
+        "responses": {
+          "200": {
+            "description": "List of Pokémon",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pokemon"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new Pokémon by name",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "pikachu"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pokémon created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "created",
+                  "name": "pikachu"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Pokémon already exists"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/pokemon/{pokemon_name}": {
+      "delete": {
+        "summary": "Delete a Pokémon by name",
+        "parameters": [
+          {
+            "name": "pokemon_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokémon deleted"
+          },
+          "404": {
+            "description": "Pokémon not found"
+          }
+        }
+      }
+    },
+    "/scout": {
+      "post": {
+        "summary": "Bulk scout default Pokémon list",
+        "responses": {
+          "201": {
+            "description": "Scouting completed"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pokemon": {
+        "type": "object",
+        "properties": {
+          "pokemon_id": {
+            "type": "integer",
+            "example": 25
+          },
+          "name": {
+            "type": "string",
+            "example": "pikachu"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "abilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stats": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "height": {
+            "type": "integer"
+          },
+          "weight": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,3 +18,12 @@ class PokemonRepository:
     @staticmethod
     def get_all():
         return Pokemon.query.all()
+
+    def delete_by_name(name: str) -> bool:
+        pokemon = Pokemon.query.filter_by(name=name.lower()).first()
+        if not pokemon:
+            return False
+
+        db.session.delete(pokemon)
+        db.session.commit()
+        return True
