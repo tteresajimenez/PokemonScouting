@@ -102,6 +102,16 @@ curl -X POST http://localhost:5000/pokemon \
 curl -X DELETE http://localhost:5000/pokemon/pikachu
 ```
 
+## Database
+
+This project uses SQLite for local development.
+
+- The database file (`pokemon.db`) is **not committed to the repository**
+- It is created automatically the first time the app runs
+- By default, it will be generated inside the `instance/` folder
+
+No manual database setup is required.
+
 ## Running tests
 All tests are written using pytest.
 ```text
@@ -113,6 +123,9 @@ The test suite covers:
 * Listing Pokémon
 * Deleting Pokémon
 * Error handling for non-existing Pokémon
+
+**Sidenote:** When running tests, the application uses an in-memory SQLite database,
+so no local files are created.
 
 ## Project structure
 ```text
