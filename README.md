@@ -167,8 +167,7 @@ PokemonScouting/
 * See DESIGN.md for architectural decisions
 
 ## Author
-Teresa Jiménez
-Backend / Python Developer
+Teresa Jiménez - Backend / Python Developer
 
 ## License
 This project is for educational and technical assessment purposes.
