@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtualenv
+venv/
+.env/
+
+# Flask
+instance/
+*.log
+
+# Database
+*.sqlite
+*.db
+
+# OS
+.DS_Store
