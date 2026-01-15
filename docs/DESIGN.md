@@ -19,8 +19,6 @@ The application follows a layered architecture:
 
 Routes → Services → Repository → Database
 
-yaml
-Copiar código
 
 ### Layers
 
