@@ -1,6 +1,7 @@
 from flask import Flask
 from app.db import db
 from app.config import Config
+from app.routes import bp
 
 
 def create_app():
@@ -8,5 +9,6 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
+    app.register_blueprint(bp)
 
     return app
