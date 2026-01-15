@@ -3,17 +3,21 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 
-# Virtualenv
+# Virtual environments
 venv/
+.venv/
 .env/
 
 # Flask
 instance/
 *.log
 
-# Database
+# Databases
 *.sqlite
 *.db
+
+# IDEs
+.idea/
 
 # OS
 .DS_Store
