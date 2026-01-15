@@ -10,7 +10,7 @@ def create_app(testing: bool = False):
         __name__,
         static_folder=os.path.join(os.getcwd(), "static")
     )
-
+    app.json.sort_keys = False
     if testing:
         app.config.from_object(TestingConfig)
     else:
